@@ -1,6 +1,5 @@
 // pages/login.tsx (Página de inicio de sesión)
-import React, { useState } from 'react';
-import '../styles/loginStyles.css';  
+import React, { useState } from 'react';  
 import { loginUser } from '../services/api';
 
 
@@ -32,6 +31,7 @@ const LoginPage: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="Correo electrónico" value={formData.email} onChange={handleChange} />
         <input type="password" name="password" placeholder="Contraseña" value={formData.password} onChange={handleChange} />
+        <button type="submit" >Registrarse</button>
         <button type="submit">Iniciar sesión</button>
       </form>
     </div>

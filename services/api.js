@@ -2,23 +2,28 @@ import { API_BASE_URL } from "../apiConfig";
 
 export const registerUser = async (userData) => {
     try {
-        const response = await fetch(`${API_BASE_URL}/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user: userData }),
-        });
-        if (!response.ok) {
-            throw new Error('Could not register user');
-        }
-        const data = await response.json();
-        return data;
+      const formData = new FormData();
+      for (const key in userData) {
+        formData.append(`user[${key}]`, userData[key]);
+      }
+  
+      const response = await fetch(`${API_BASE_URL}/users`, {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Could not register user');
+      }
+  
+      const data = await response.json();
+      return data;
     } catch (error) {
-        console.error('Error registering user:', error);
-        throw error;
+      console.error('Error registering user:', error);
+      throw error;
     }
-};
+  };
+  
 
 export const loginUser = async (userData) => {
     try {

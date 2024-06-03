@@ -5,7 +5,7 @@ import Link from 'next/link';
 const HomePage: React.FC = () => {
   return (
     <div>
-      <h1>Bienvenido a la aplicación</h1>
+      <h1>Bienvenido a GYMBRO</h1>
       <Link href="/register">
         <a>Registrarse</a>
       </Link>
